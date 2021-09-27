@@ -20,11 +20,15 @@ Then you can run the server with:
 
 Server will be listening into **http://localhost:3333**
 
-+ The app have one **POST Route**: {{ BASE_URL }}/short
++ **POST Route**: __{{ BASE_URL }}/short__
 It expect to receive one __{ url: string }__ on the **request.body**.
 It returns __{ url: string }__ on the **response.body**, which is the shortened URL.
 
-+ The app have one **GET Route**: {{ BASE_URL }}/:hash, which is basically the returned url from the previous POST route.
++ **GET Route**: __{{ BASE_URL }}/:hash__
+It will redirect you to the originalUrl through your shortened link.
+
++ The app have one **GET Route**: __{{ BASE_URL }}/shortened/all__
+It will return one **array** with all shortened links.
 
 **OBS:** The api only uses memory storage, so every shortened link will be lost on server reset.
 
