@@ -30,7 +30,9 @@ It will redirect you to the originalUrl through your shortened link.
 + The app have one **GET Route**: __{{ BASE_URL }}/shortened/all__  
 It will return one **array** with all shortened links.
 
-**OBS:** The api only uses memory storage, so every shortened link will be lost on server reset.
+**OBS:** The api only uses memory storage, so every shortened link will be lost on server reset.  
+
+**OBS-2:** On the project repository, you will find a file called **"insomnia_routes.json"** in which you can export to get two Insomnia HTTP Routes, so you can test the app more easily.
 
 ## Contact
 
