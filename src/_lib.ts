@@ -2,8 +2,12 @@ import hash, { Translator } from 'short-uuid';
 
 interface IShortenedUrl {
   originalUrl: string;
-  shortenUrl: string;
+  shortUrl: string;
   hash: string;
+}
+
+interface IShortUrl {
+  url: string;
 }
 
 class CoreLibrary {
@@ -19,22 +23,24 @@ class CoreLibrary {
   shortenUrl(url: string): string {
     const urlHash = this.shortener.new();
 
-    const shortenUrl = `http://localhost:3333/${urlHash}`;
+    const shortUrl = `http://localhost:3333/${urlHash}`;
 
-    console.log('shortened URL below');
-    console.log(shortenUrl);
-
-    const data: IShortenedUrl = { originalUrl: url, hash: String(hash), shortenUrl };
-
+    const data: IShortenedUrl = { originalUrl: url, hash: urlHash, shortUrl };
     this.urls.push(data);
 
-    return shortenUrl;
+    return shortUrl;
   }
 
   findByHash(hash: string): IShortenedUrl | undefined {
     const shortened = this.urls.find(url => url.hash === hash);
 
     return shortened;
+  }
+
+  findAllShortLinks(): IShortUrl[] {
+    const urls = this.urls.map(url => ({ url: url.shortUrl }));
+
+    return urls;
   }
 }
 
