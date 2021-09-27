@@ -23,7 +23,13 @@ routes.get('/:hash', (req, res) => {
     throw new Error('Given hash not found');
   }
 
-  return res.send(301).redirect(url.originalUrl);
+  return res.redirect(301, url.originalUrl);
+})
+
+routes.get('/shortened/all', (req, res) => {
+  const data = lib.findAllShortLinks();
+
+  return res.json({ links: data });
 })
 
 export { routes };
